@@ -3,8 +3,10 @@ import moment from 'moment';
 
 
 const Project = props => {
+
   const { project, status, dueDate } = props.project;
   const due = moment(dueDate).format('MM/DD/YYYY');
+
   return (
     <div className="card">
       <div className="card-body">
@@ -20,6 +22,7 @@ const Project = props => {
       </div>
     </div>
   );
+  
 }
 
 export default Project;

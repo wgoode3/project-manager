@@ -25,7 +25,9 @@ const ProjectForm = props => {
 
   return (
     <form onSubmit={ addProject }>
+      
       <h3>Plan Project</h3>
+      
       <div className="form-group">
         <label>Project</label>
         <input 
@@ -40,6 +42,7 @@ const ProjectForm = props => {
           ""
         }
       </div>
+     
       <div className="form-group">
         <label>Due Date</label>
         <input 
@@ -59,6 +62,7 @@ const ProjectForm = props => {
         value="Plan Project" 
         className="btn btn-primary" 
       />
+      
     </form>
   );
 

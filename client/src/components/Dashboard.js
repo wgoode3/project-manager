@@ -38,6 +38,7 @@ const Dashboard = props => {
 
   return (
     <div className="row">
+      
       <div className="col">
         <h3>Backlog</h3>
         {
@@ -52,6 +53,7 @@ const Dashboard = props => {
             )
         }
       </div>
+      
       <div className="col">
         <h3>In Progress</h3>
         {
@@ -66,6 +68,7 @@ const Dashboard = props => {
             )
         }
       </div>
+      
       <div className="col">
         <h3>Completed</h3>
         {
@@ -80,8 +83,10 @@ const Dashboard = props => {
             )
         }
       </div>
+      
     </div>
-  )
+  );
+
 }
 
 export default Dashboard;
