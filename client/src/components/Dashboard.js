@@ -17,12 +17,8 @@ const Dashboard = props => {
     fetchProjects();
   }, []);
 
-  const changeStatus = proj => {
-    if(proj.status === "new") {
-      proj.status = "started";
-    } else if(proj.status === "started") {
-      proj.status = "completed";
-    }
+  const changeStatus = (proj, status) => {
+    proj.status = status;
     axios.put(`http://localhost:8000/api/projects/${proj._id}`, proj)
       .then(res => {
         fetchProjects();
@@ -46,7 +42,7 @@ const Dashboard = props => {
             .filter(p => p.status === "new")
             .map( p =>
               <Project project={ p } >
-                <button className="btn btn-warning" onClick={ e => changeStatus(p) }>
+                <button className="btn btn-warning" onClick={ e => changeStatus(p, "started") }>
                   Start Project
                 </button>
               </Project> 
@@ -61,7 +57,7 @@ const Dashboard = props => {
             .filter(p => p.status === "started")
             .map( p =>
               <Project project={p} >
-                <button className="btn btn-success" onClick={ e => changeStatus(p) }>
+                <button className="btn btn-success" onClick={ e => changeStatus(p, "completed") }>
                   Complete Project
                 </button>
               </Project> 
