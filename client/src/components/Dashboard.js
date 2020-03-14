@@ -5,7 +5,7 @@ import moment from 'moment';
 
 const Dashboard = props => {
 
-  const [allProject, setAllProjects] = useState([]);
+  const [allProjects, setAllProjects] = useState([]);
 
   const fetchProjects = () => {
     axios.get("http://localhost:8000/api/projects")
@@ -41,7 +41,7 @@ const Dashboard = props => {
       <div className="col">
         <h3>Backlog</h3>
         {
-          allProject
+          allProjects
             .filter(p => p.status === "new")
             .map( p =>
               <div className="card" key={p._id}>
@@ -68,7 +68,7 @@ const Dashboard = props => {
       <div className="col">
         <h3>In Progress</h3>
         {
-          allProject
+          allProjects
             .filter(p => p.status === "started")
             .map( p =>
               <div className="card" key={p._id}>
@@ -95,7 +95,7 @@ const Dashboard = props => {
       <div className="col">
         <h3>Completed</h3>
         {
-          allProject
+          allProjects
             .filter(p => p.status === "completed")
             .map( p =>
               <div className="card" key={p._id}>
