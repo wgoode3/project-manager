@@ -12,7 +12,9 @@ const ProjectForm = props => {
   const addProject = e => {
     e.preventDefault();
     const newProject = {project, dueDate, status: "new"};
-    axios.post("http://localhost:8000/api/projects", newProject)
+    axios.post("http://localhost:8000/api/projects", newProject, {
+      withCredentials: true
+    })
       .then(res => {
         console.log(res);
         if(res.data.errors) {

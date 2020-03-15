@@ -1,9 +1,19 @@
 const Projects = require("./controllers/project.controller");
+const Users = require("./controllers/user.controller");
+const { authenticate } = require("./config/jwt");
 
 
 module.exports = app => {
-  app.get("/api/projects", Projects.getAll);
-  app.post("/api/projects", Projects.create);
-  app.put("/api/projects/:_id", Projects.update);
-  app.delete("/api/projects/:_id", Projects.delete);
+
+  // project routes
+  app.get("/api/projects", authenticate, Projects.getAll);
+  app.post("/api/projects", authenticate, Projects.create);
+  app.put("/api/projects/:_id", authenticate, Projects.update);
+  app.delete("/api/projects/:_id", authenticate, Projects.delete);
+
+  // user routes
+  app.post("/api/register", Users.register);
+  app.post("/api/login", Users.login);
+  app.get("/api/user/logout", Users.logout);
+
 }
